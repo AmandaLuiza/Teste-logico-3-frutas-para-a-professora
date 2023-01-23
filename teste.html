@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João e Maria</title>
+</head>
+<body>
+    <script>
+        const geraFrutas = () => {
+        const frutas = parseInt(Math.random() * 6)
+        return frutas}
+
+        const obtemMelhorAluno = () => {
+        return parseInt(Math.random() * 2) === 0 ? 'Joao' : 'Maria'}
+        
+        let dia = 1
+        let mes = []
+
+        while (dia < 31) {
+        const best = obtemMelhorAluno()
+        const peras = geraFrutas()//Maria
+        const macas = geraFrutas()//Joao
+        mes.push( { 'melhor': best, 'macas': macas, 'peras': peras } )
+        dia++
+        }
+        console.log(mes)
+        let tabela = '<table border=1>'
+        tabela += '<tbody>'
+        tabela += '<tr><th>Dia</th><th>Peras</th><th>Maças</th><th>Melhor Aluno</th><th>Fruta 1</th><th>Fruta 2</th><th>Fruta 3</th></tr>'
+        for(let i = 0; i < mes.length; i++) {
+        tabela += `
+            <tr>
+                <td>${i+1}</td>
+                <td>${mes[i].peras}</td>
+                <td>${mes[i].macas}</td>
+                <td>${mes[i].melhor}</td>
+                <td>${
+                    mes[i].melhor === 'Joao' && mes[i].macas > 0 ? 'Maçã' : mes[i].peras > 0 ? 'Pera' : 
+                    mes[i].melhor === 'Maria' && mes[i].peras > 0 ? 'Pera' : mes[i].macas > 0 ? 'Maçã' : '' }
+                </td>
+                
+                <td>${
+                    mes[i].melhor === 'Joao' && mes[i].macas > 1 ? 'Maçã' : mes[i].melhor === 'Joao' && mes[i].macas + mes[i].peras > 1 && mes[i].peras > 0 ? 'Pera' : 
+                    mes[i].melhor === 'Maria' && mes[i].peras > 1 ? 'Pera' : mes[i].melhor === 'Maria' && mes[i].macas + mes[i].peras > 1 && mes[i].macas > 0 ? 'Maçã' : '' }
+                </td>   
+
+                <td>${
+                    mes[i].melhor === 'Joao' && mes[i].macas > 2 ? 'Maçã' : mes[i].melhor ==='Joao' && mes[i].macas + mes[i].peras > 2 && mes[i].peras > 0 ? 'Pera' : 
+                    mes[i].melhor === 'Maria' && mes[i].peras > 2 ? 'Pera' : mes[i].melhor === 'Maria' && mes[i].macas + mes[i].peras > 1 && mes[i].macas > 0 ? 'Maçã' : '' }
+                </td>
+            </tr>`
+        }
+        tabela += '</tbody>'
+        tabela += '</table>'
+        document.write(tabela)
+        console.log(tabela)
+    </script>
+</body>
+</html>
